@@ -15,4 +15,4 @@ AWK_CMD="awk -f tc_test_compare.awk"
 
 echo "Test duration delta between $1 and $2 (positive means second file had the slower run):"
 
-$JOIN_CMD <(tail -n+2 $1 |$PRE_SORT) <(tail -n+2 $2 | $PRE_SORT) | sed -e 's/TestSuite: com.idexpertscorp.radarfirst.tests.basicAcceptance.//' | $AWK_CMD | $POST_SORT
+$JOIN_CMD <(tail -n+2 $1 |$PRE_SORT) <(tail -n+2 $2 | $PRE_SORT) | sed -e 's/TestSuite: //' | $AWK_CMD | $POST_SORT
