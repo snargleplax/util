@@ -7,11 +7,8 @@ PRE_SORT="sort -k2 -t,"
 POST_SORT="sort -n -r -k2 -t:"
 JOIN_CMD="join -t, -o 0,1.4,2.4 -1 2 -2 2"
 
-# Ensure tc_test_compare.awk is in AWKPATH
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-AWKPATH=$SCRIPT_DIR:$AWKPATH
-
-AWK_CMD="awk -f tc_test_compare.awk"
+AWK_CMD="awk -f $SCRIPT_DIR/tc_test_compare.awk"
 
 echo "Test duration delta between $1 and $2 (positive means second file had the slower run):"
 
