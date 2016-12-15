@@ -1,0 +1,36 @@
+#!/usr/bin/awk
+
+function ltrim(s) { sub(/^[ \t\r\n]+/, "", s); return s }
+function rtrim(s) { sub(/[ \t\r\n]+$/, "", s); return s }
+function trim(s) { return rtrim(ltrim(s)); }
+
+BEGIN {
+	seenFirstScenario = 0
+}
+
+/^[[:blank:]]*Scenario:.*$/ {
+	seenFirstScenario = 1
+	inScenario = 1
+	print "{code:title="trim($0)"}"
+	next
+}
+
+/^[[:blank:]]*$/ {
+	if (inScenario) {
+		print "{code}\n"
+		inScenario = 0
+		next
+	}
+}
+
+{
+	if (seenFirstScenario) {
+		print
+	}
+}
+
+END {
+	if (inScenario) {
+		print "{code}\n"
+	}
+}
