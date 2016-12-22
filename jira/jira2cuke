@@ -1,4 +1,4 @@
-#!/usr/bin/sed
+#!/usr/bin/sed -f
 
 /{code}/d
 s/{code:title=\(.*\)}/\1/
