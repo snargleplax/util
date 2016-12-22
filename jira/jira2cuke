@@ -1,4 +1,5 @@
-#!/usr/bin/sed -f
+#!/usr/bin/sed -E -f
 
 /{code}/d
-s/{code:title=\(.*\)}/\1/
+s/{code:title=(Scenario: )?(.*)}/  Scenario: \2/
+s/^(Given|When|Then|And)/    \1/

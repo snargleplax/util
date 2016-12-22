@@ -25,7 +25,7 @@ BEGIN {
 
 {
 	if (seenFirstScenario) {
-		print
+		print trim($0)
 	}
 }
 
